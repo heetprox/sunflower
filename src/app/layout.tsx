@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 
 
 export const metadata: Metadata = {
-  title: "SpotiLove | Music Dating App",
+  title: "Sunflower | Music Dating App",
   description: "Find friends and dates with similar music taste",
 };
 

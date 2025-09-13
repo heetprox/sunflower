@@ -21,15 +21,19 @@ const Navbar = () => {
 
         <div className="  h-full w-full">
           {user && (
-            <div className='h-full grid grid-cols-3 gap-2  w-full'>
-              <div className="w-[100%] h-full">
+            <div className='h-full flex  w-full'
+            style={{
+              gap: 'clamp(0.5rem, 0.5vw, 200rem)',
+            }}
+            >
+              <div className="w-[20%] h-full">
                 <Logo2 />
               </div>
-              <div className=" w-[100%]   h-full aspect-square rounded-3xl border-4 border-[#fff] "
+              <div className=" w-[80%]    h-full aspect-video rounded-3xl  bg-[#2a2a2a]"
                 onClick={() => { setIsOpen(true) }}
               >
                 {user.profilePicture ? (
-                  <div className='flex items-center w-full h-full gap-1.5'>
+                  <div className='flex items-center w-[25%] h-full gap-1.5'>
                     <Image
                       src={user.profilePicture}
                       alt={user.displayName}
@@ -40,17 +44,20 @@ const Navbar = () => {
                   </div>
 
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-full h-full flex items-center justify-center">
                     <span className="text-3xl text-black/30">
                       {user.displayName.charAt(0).toUpperCase()}
                     </span>
                   </div>
                 )}
-
-              </div>
-                <div className="flex w-full h-full items-center bg-[#8D50F9] rounded-full aspect-square border-4 justify-center border-white">
-                  <Cog size={60} color='white'/>
+<div className="flex w-full h-full items-center bg-[#8D50F9] rounded-full aspect-square border-4 justify-center border-white">
+                  <Cog size={20} color='white'/>
                 </div>
+                  <div className="flex w-full h-full items-center bg-[#8D50F9] rounded-full aspect-square border-4 justify-center border-white">
+                  <Cog size={20} color='white'/>
+                </div>
+              </div>
+                
 
               {/* <div className={`flex justify-end pb-1 h-full py-2 px-3 rounded-2xl  bg-[#151312] flex-col`}>
                 <span className="font-semibold text-white"
