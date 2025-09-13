@@ -13,6 +13,10 @@ import Image from 'next/image';
 import Loader from './Loader';
 
 interface ChatProps {
+
+
+
+  
   receiverId: string;
   receiverData?: IUser;
   onClose?: boolean;
