@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./fonts.css"
+import { ViewTransitions } from "next-view-transitions";
+import { SmoothScrollProvider } from "./SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "Sunflower",
@@ -14,12 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <SmoothScrollProvider>
+          <body className="bg-[#131313] text-white scrollbar-none overflow-y-auto">
+            {children}
+          </body>
+        </SmoothScrollProvider>
+      </html>
+    </ViewTransitions>
   );
 }
