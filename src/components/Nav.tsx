@@ -4,7 +4,7 @@ import React from 'react'
 const Nav = () => {
   return (
     <div className=' h-full   min-h-screen  p-4 border-white/50 bg-black flex flex-col w-28 overflow-hidden gap-4'>
-      <div className="aspect-square items-center w-full h-fit rounded-lg overflow-hidden">
+      <div className="aspect-square cursor-pointer items-center w-full h-fit rounded-lg overflow-hidden">
 
         <Image
           src={"/like.webp"}
@@ -15,7 +15,7 @@ const Nav = () => {
         />
       </div>
 
-      <div className="aspect-square bg-green-400 
+      <div className="aspect-square  bg-green-400 
         w-full h-fit rounded-lg"></div>
 
       <div className="aspect-square w-full bg-blue-400 h-fit rounded-lg"></div>

@@ -12,7 +12,7 @@ const Album = ({ }) => {
                         <div className="text-3xl font-bold">Light Switch</div>
                         <div className=" opacity-95 text-xl">Charlie puth</div>
                     </div>
-                    <div className="bg-purple-400 items-center w-15 aspect-square rounded-full p-4">
+                    <div className="bg-purple-400 cursor-pointer items-center w-15 aspect-square rounded-full p-4">
                         <div className="bg-black w-full h-full" style={{
                             clipPath: "polygon(80% 50%, 25% 90%, 25% 10%)"
                         }}></div>
