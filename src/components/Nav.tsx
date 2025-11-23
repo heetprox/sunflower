@@ -3,8 +3,8 @@ import React from 'react'
 
 const Nav = () => {
   return (
-    <div className=' h-full fixed top-0 left-0 min-h-screen  p-4 border-white/50 bg-black flex flex-col w-24 gap-5'>
-        <div className="aspect-square items-center  bg-white w-full h-fit rounded-lg overflow-hidden">
+    <div className=' h-full fixed top-0 left-0 min-h-screen  p-4 border-white/50 bg-black flex flex-col w-fit gap-4'>
+        <div className="aspect-square items-center w-24 h-fit rounded-lg overflow-hidden">
 
           <Image
             src={"/like.webp"}
@@ -15,13 +15,14 @@ const Nav = () => {
           />
         </div>
 
-        <div className="aspect-square bg-white w-full h-fit rounded-lg"></div>
+        <div className="aspect-square bg-green-400 
+        w-24 h-fit rounded-lg"></div>
 
-        <div className="aspect-square bg-white w-full h-fit rounded-lg"></div>
+        <div className="aspect-square w-24 bg-blue-400 h-fit rounded-lg"></div>
 
-        <div className="aspect-square bg-white w-full h-fit rounded-lg"></div>
+        <div className="aspect-square w-24 h-fit bg-yellow-300 rounded-lg"></div>
 
-        <div className="aspect-square bg-white w-full h-fit rounded-lg"></div>
+        <div className="aspect-square bg-white w-24 h-fit rounded-lg"></div>
 
     </div>
   )
