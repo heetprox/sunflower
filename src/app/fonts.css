@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+CZ:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 @font-face {
     font-family: 'NeueHaasUnica-Bold';
@@ -30,6 +31,23 @@
     font-family: "InputMono-Medium", sans-serif;
     letter-spacing: 0.0125em;
 }
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.robo {
+  font-family: "Roboto Mono", monospace;
+}
+
+.ant {
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+}
+
+
 
 .medium-font {
     font-family: 'NeueHaasUnica-Bold', sans-serif;
