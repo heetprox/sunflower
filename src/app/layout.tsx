@@ -3,6 +3,7 @@ import "./globals.css";
 import "./fonts.css"
 import { ViewTransitions } from "next-view-transitions";
 import { SmoothScrollProvider } from "./SmoothScrollProvider";
+import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "Sunflower",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <html lang="en">
         <SmoothScrollProvider>
           <body className="bg-[#131313] text-white scrollbar-none overflow-y-auto">
+            <Nav/>
             {children}
           </body>
         </SmoothScrollProvider>
