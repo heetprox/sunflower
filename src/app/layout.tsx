@@ -19,11 +19,11 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <SmoothScrollProvider>
-          <body className="bg-[#131313] text-white scrollbar-none overflow-y-auto flex">
-            <div className="w-[10%] flex justify-center p-10 relative">
+          <body className="bg-black text-white scrollbar-none overflow-y-auto flex">
+            <div className="w-[8%] min-h-screen max-h-screen bg-black flex justify-center p-0 items-center sticky top-0">
               <Nav />
             </div>
-            <div className="w-[90%] relative">
+            <div className="w-[92%] relative">
               {children}
             </div>
           </body>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Nav = () => {
   return (
-    <div className=' h-full fixed top-0 left-0 min-h-screen  p-4 border-white/50 bg-black flex flex-col w-fit gap-4'>
+    <div className=' h-full   min-h-screen  p-4 border-white/50 bg-black flex flex-col w-fit gap-4'>
         <div className="aspect-square items-center w-24 h-fit rounded-lg overflow-hidden">
 
           <Image
