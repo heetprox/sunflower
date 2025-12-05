@@ -20,10 +20,10 @@ export default function RootLayout({
       <html lang="en">
         <SmoothScrollProvider>
           <body className="bg-black text-white scrollbar-none overflow-y-auto flex">
-            <div className="w-[8%] min-h-screen max-h-screen bg-black flex justify-center p-0 items-center sticky top-0">
+            {/* <div className="w-[8%] min-h-screen max-h-screen bg-black flex justify-center p-0 items-center sticky top-0">
               <Nav />
-            </div>
-            <div className="w-[92%] relative">
+            </div> */}
+            <div className="w-full relative">
               {children}
             </div>
           </body>

@@ -17,19 +17,31 @@
     src: url("/fonts/OffBit-101Bold.ttf") format("truetype");
     font-style: normal;
 }
+@font-face {
+  font-family: "AndersonGrotesk-Bold";
+  src: url("/fonts/AndersonGrotesk-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "AvoidanceGenevra-Bold";
+  src: url("/fonts/AvoidanceGenevra-Bold.ttf") format("truetype");
+}
+
 
 .off{
     font-family: "OffBit-101Bold", sans-serif;
 }
-
+.and {
+  font-family: "AvoidanceGenevra-Bold", sans-serif;
+}
 .play {
   font-family: "Playwrite CZ", cursive;
   font-style: normal;
 }
-
+.super{
+  font-family: "AndersonGrotesk-Bold", sans-serif;
+}
 .mono {
     font-family: "InputMono-Medium", sans-serif;
-    letter-spacing: 0.0125em;
 }
 
 .inter {
