@@ -1,30 +1,60 @@
-import Image from 'next/image'
-import React from 'react'
+import { Home, Search, User, UserCircle, Menu } from 'lucide-react'
+import React, { useState } from 'react'
+
+const navItems = [
+  {
+    icon: Home,
+    label: 'Home',
+  },
+  {
+    icon: Search,
+    label: 'Search',
+  },
+  {
+    icon: User,
+    label: 'Following',
+  },
+  {
+    icon: UserCircle,
+    label: 'Profile',
+  },
+]
 
 const Nav = () => {
-  return (
-    <div className=' h-full   min-h-screen  p-4 border-white/50 bg-black flex flex-col w-28 overflow-hidden gap-4'>
-      <div className="aspect-square cursor-pointer items-center w-full h-fit rounded-lg overflow-hidden">
+  const [isExpanded, setIsExpanded] = useState(false)
 
-        <Image
-          src={"/like.webp"}
-          alt='like'
-          width={200}
-          height={200}
-          className='w-full h-full '
-        />
+  return (
+    <>
+      {/* Sidebar */}
+      <div 
+        className={`h-full bg-[#231f27] min-h-screen border-white/50 flex flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
+          isExpanded ? 'w-[15%]' : 'w-20'
+        }`}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
+      >
+        <div className="p-7">
+          <Menu className='w-6 h-6 text-white' />
+        </div>
+        {navItems.map((item, index) => (
+          <div 
+            key={item.label} 
+            className="flex text-xl text-white hover:bg-[#8967b2] w-full px-7 py-2 gap-5 cursor-pointer transition-colors duration-200"
+          >
+            <item.icon className="w-6 h-6 shrink-0" />
+            <span 
+              className={`whitespace-nowrap transition-all duration-300 ${
+                isExpanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+              }`}
+            >
+              {item.label}
+            </span>
+          </div>
+        ))}
       </div>
 
-      <div className="aspect-square  bg-green-400 
-        w-full h-fit rounded-lg"></div>
-
-      <div className="aspect-square w-full bg-blue-400 h-fit rounded-lg"></div>
-
-      <div className="aspect-square w-full h-fit bg-yellow-300 rounded-lg"></div>
-
-      <div className="aspect-square bg-white w-full h-fit rounded-lg"></div>
-
-    </div>
+      
+    </>
   )
 }
 
