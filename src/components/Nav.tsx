@@ -1,21 +1,26 @@
 import { Home, Search, User, UserCircle, Menu } from 'lucide-react'
+import Link from 'next/link'
 
 const navItems = [
   {
     icon: Home,
     label: 'Home',
+    link: '/dashboard',
   },
   {
     icon: Search,
     label: 'Search',
+    link: '/search',
   },
   {
     icon: User,
     label: 'Following',
+    link: '/following',
   },
   {
     icon: UserCircle,
     label: 'Profile',
+    link: '/profile',
   },
 ]
 
@@ -24,7 +29,6 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
 
   return (
     <>
-      {/* Sidebar */}
       <div 
         className={`h-full bg-[#231f27] min-h-screen border-white/50 flex flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
           isExpanded ? 'w-[15%]' : 'w-20'
@@ -36,8 +40,8 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
           <Menu className='w-6 h-6 text-white' />
         </div>
         {navItems.map((item, index) => (
+          <Link href={item.link} key={item.label}>
           <div 
-            key={item.label} 
             className="flex text-xl text-white hover:bg-[#8967b2] w-full px-7 py-2 gap-5 cursor-pointer transition-colors duration-200"
           >
             <item.icon className="w-6 h-6 shrink-0" />
@@ -49,6 +53,7 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
               {item.label}
             </span>
           </div>
+          </Link>
         ))}
       </div>
 
