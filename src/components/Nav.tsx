@@ -1,5 +1,4 @@
 import { Home, Search, User, UserCircle, Menu } from 'lucide-react'
-import React, { useState } from 'react'
 
 const navItems = [
   {
@@ -20,8 +19,8 @@ const navItems = [
   },
 ]
 
-const Nav = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
+const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (isExpanded: boolean) => void}) => {
+
 
   return (
     <>
