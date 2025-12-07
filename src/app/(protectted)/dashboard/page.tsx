@@ -1,5 +1,6 @@
 "use client";
 
+import ArtistSearch from "@/components/ArtistSearch";
 import Nav from "@/components/Nav";
 import { useSession, signOut } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -32,9 +33,10 @@ export default function Dashboard() {
     <div className="w-full h-full flex items-center justify-between">
    
 <div className="flex flex-col">
-      <div className="text-white and text-3xl">
+      <ArtistSearch />
+      {/* <div className="text-white and text-3xl">
         Latest Albums
-      </div>
+      </div> */}
         </div>
       </div>
   );
