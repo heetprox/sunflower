@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Search, X } from "lucide-react";
+import { formatNumber } from "@/lib/formatNumber";
 
-interface Artist {  
+interface Artist {
     id: string;
     name: string;
     images: { url: string; height: number; width: number }[];
@@ -56,21 +58,41 @@ export default function ArtistSearch() {
     };
 
     const handleArtistClick = (artist: Artist) => {
-        // Handle artist selection (e.g., follow, view details, etc.)
         console.log("Selected artist:", artist);
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto p-4">
-            {/* Search Input */}
-            <div className="relative mb-6">
-                <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search for artists..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+        <div className="w-[30vw] mx-auto py-4">
+            <div className="relative w-full mb-6">
+                <div className={`relative w-full transition-all duration-300 `}>
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <Search
+                            className={`transition-colors duration-300 `}
+                            color="white"
+                            size={20}
+                        />
+                    </div>
+
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Search for artists..."
+                        className={`w-full pl-12 pr-12 py-4 bg-[#231f27]  rounded-4xl super  transition-all duration-300 text-white placeholder-white/70 shadow-sm hover:shadow-md focus:outline-none`}
+                    />
+
+                    {query && (
+                        <button
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 
+              hover:text-gray-600 transition-colors duration-200 p-1 rounded-full
+              hover:bg-gray-100"
+                        >
+                            <X size={18} />
+                        </button>
+                    )}
+
+
+                </div>
                 {loading && (
                     <div className="absolute right-3 top-3">
                         <div className="animate-spin h-6 w-6 border-2 border-blue-500 border-t-transparent rounded-full"></div>
@@ -78,7 +100,6 @@ export default function ArtistSearch() {
                 )}
             </div>
 
-            {/* Error Message */}
             {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                     {error}
@@ -86,40 +107,57 @@ export default function ArtistSearch() {
             )}
 
             {/* Results */}
-            <div className="space-y-3">
-                {artists.map((artist) => (
+            <div className="space-y-3 w-full">
+                {artists.map((artist, index) => (
                     <div
                         key={artist.id}
                         onClick={() => handleArtistClick(artist)}
-                        className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition"
-                    >
-                        {/* Artist Image */}
-                        <div className="shrink-0">
-                            {artist.images.length > 0 ? (
+                        className={`flex w-full items-center gap-4  rounded-4xl cursor-pointer
+                        ${index == 0 ? "bg-white/10" : "hover:bg-white/15"}
+                        `}>
+                        {index == 0 ?
+                            <div className="flex p-3 flex-col gap-3">
+
+                                <div className="and text-white text-3xl ml-2">Top result</div>
+                                <div className="flex p-3 flex-col gap-4 w-full">
+                                    <Image
+                                        src={artist.images[0].url}
+                                        alt={artist.name}
+                                        width={64}
+                                        height={64}
+                                        className="rounded-full w-32 aspect-square object-cover"
+                                    />
+                                    <div className="w-full rounded-full justify-center super flex flex-col">
+                                        <span className="text-white text-2xl">
+                                            {artist.name}
+                                        </span>
+                                        <span className="text-white/60 text-sm">
+                                            {formatNumber(artist.followers)} followers
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> :
+                            <div className="flex gap-4 w-full">
                                 <Image
                                     src={artist.images[0].url}
                                     alt={artist.name}
                                     width={64}
                                     height={64}
-                                    className="rounded-full object-cover"
+                                    className="rounded-full aspect-square object-cover"
                                 />
-                            ) : (
-                                <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-                                    <span className="text-gray-600 text-xl">
-                                        {artist.name.charAt(0)}
+                                <div className="w-full rounded-full justify-center super flex flex-col">
+                                    <span className="text-white text-lg">
+                                        {artist.name}
+                                    </span>
+                                    <span className="text-white/60 text-sm">
+                                        {formatNumber(artist.followers)} followers
                                     </span>
                                 </div>
-                            )}
-                        </div>
+                            </div>}
 
-                       
 
-                        {/* Popularity Badge */}
-                        <div className="shrink-0">
-                            <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                                {artist.popularity}%
-                            </div>
-                        </div>
+
+
                     </div>
                 ))}
 
