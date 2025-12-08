@@ -33,10 +33,9 @@ export default function Dashboard() {
     <div className="w-full h-full flex items-center justify-between">
    
 <div className="flex flex-col">
-      <ArtistSearch />
-      {/* <div className="text-white and text-3xl">
+      <div className="text-white and text-3xl">
         Latest Albums
-      </div> */}
+      </div>
         </div>
       </div>
   );

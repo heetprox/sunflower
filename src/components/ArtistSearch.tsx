@@ -19,7 +19,6 @@ export default function ArtistSearch() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    // Debounce search
     useEffect(() => {
         const delaySearch = setTimeout(() => {
             if (query.trim().length > 0) {
@@ -37,7 +36,6 @@ export default function ArtistSearch() {
             setLoading(true);
             setError("");
 
-            // Call your Express backend
             const response = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/api/search?q=${encodeURIComponent(searchQuery)}`
             );
