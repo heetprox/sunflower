@@ -32,7 +32,7 @@ export default function Search() {
   return (
     <div className="w-full h-full flex items-center justify-between">
    
-<div className="flex flex-col">
+<div className="flex flex-col px-10 py-4">
       <ArtistSearch />
       {/* <div className="text-white and text-3xl">
         Latest Albums
