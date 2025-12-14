@@ -19,8 +19,8 @@ const navItems = [
   },
   {
     icon: UserCircle,
-    label: 'Profile',
-    link: '/profile',
+    label: 'Albums',
+    link: '/albums/all',
   },
 ]
 
