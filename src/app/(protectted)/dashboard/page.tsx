@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
+import Link from "next/link";
 
 interface Album {
   id: string;
@@ -50,12 +51,10 @@ export default function Dashboard() {
         return;
       }
 
-      // Extract artist IDs - handle both array of strings and array of objects
       const artistIds = followedData.data.map((item: any) => 
         typeof item === 'string' ? item : item.artistId || item.id
       );
 
-      // Fetch albums for each artist
       const allAlbumsPromises = artistIds.map(async (artistId: string) => {
         const albumRes = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/getallalbum/${artistId}`
@@ -67,7 +66,6 @@ export default function Dashboard() {
       const allAlbumsArrays = await Promise.all(allAlbumsPromises);
       const allAlbums = allAlbumsArrays.flat();
 
-      // Sort by release date (newest first)
       const sortedAlbums = allAlbums.sort((a: Album, b: Album) => {
         return new Date(b.release_date).getTime() - new Date(a.release_date).getTime();
       });
@@ -81,24 +79,28 @@ export default function Dashboard() {
     }
   };
 
-  const formatDate = (dateString: string) => {
+  const getMonthName = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+    return date.toLocaleDateString("en-US", { month: "short" });
+  };
+
+  const isRecent = (dateString: string) => {
+    const albumDate = new Date(dateString);
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    return albumDate >= thirtyDaysAgo;
   };
 
   if (!session) {
     return null;
   }
 
-  return (
-    <div className="w-full min-h-screen bg-[#121212] p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-white text-3xl font-bold mb-8">Latest Albums</h1>
+  const recentAlbums = albums.filter(album => isRecent(album.release_date)).slice(0, 4);
+  const olderAlbums = albums.filter(album => !isRecent(album.release_date)).slice(0, 8);
 
+  return (
+    <div className="w-full super min-h-screen p-8">
+      <div className="max-w-7xl mx-auto">
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">
             {error}
@@ -114,40 +116,88 @@ export default function Dashboard() {
             No albums found. Follow some artists to see their latest releases!
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {albums.map((album) => (
-              <div
-                key={album.id}
-                className="bg-[#231f27] rounded-lg p-4 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
-              >
-                <div className="relative mb-4 aspect-square">
-                  <Image
-                    src={album.images[0]?.url || "/placeholder.png"}
-                    alt={album.name}
-                    fill
-                    className="object-cover rounded-md"
-                  />
+          <>
+            {recentAlbums.length > 0 && (
+              <div className="mb-12">
+                <div className="flex items-center justify-between mb-6">
+                  <h1 className="text-white text-2xl font-bold">Latest Albums</h1>
+                  <Link 
+                    href="/albums/all"
+                    className="text-[#b3b3b3] hover:text-white text-sm font-semibold transition-colors"
+                  >
+                    View All
+                  </Link>
                 </div>
-
-                <h3 className="text-white font-semibold mb-1 truncate group-hover:text-white/90">
-                  {album.name}
-                </h3>
-
-                <p className="text-white/60 text-sm mb-1 truncate">
-                  {album.artists.map((artist) => artist.name).join(", ")}
-                </p>
-
-                <div className="flex items-center justify-between text-xs text-white/40">
-                  <span>{formatDate(album.release_date)}</span>
-                  <span className="capitalize">{album.album_type}</span>
+                <div className="grid grid-cols-4 gap-4">
+                  {recentAlbums.map((album) => (
+                    <div
+                      key={album.id}
+                      className="bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300 cursor-pointer group"
+                    >
+                      <div className="relative mb-4 aspect-square">
+                        <Image
+                          src={album.images[0]?.url || "/placeholder.png"}
+                          alt={album.name}
+                          width={400}
+                          height={400}
+                          className="rounded-lg aspect-square w-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-white font-semibold text-base mb-1 truncate">
+                        {album.name}
+                      </h3>
+                      <p className="text-[#b3b3b3] text-sm truncate">
+                        {album.artists.map((artist) => artist.name).join(", ")}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-
-                <p className="text-white/40 text-xs mt-1">
-                  {album.total_tracks} track{album.total_tracks !== 1 ? "s" : ""}
-                </p>
               </div>
-            ))}
-          </div>
+            )}
+
+            {olderAlbums.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-white text-2xl font-bold">Earlier Releases</h2>
+                  <Link 
+                    href="/albums/all"
+                    className="text-[#b3b3b3] hover:text-white text-sm font-semibold transition-colors"
+                  >
+                    View All
+                  </Link>
+                </div>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                  {olderAlbums.map((album) => (
+                    <div
+                      key={album.id}
+                      className="flex items-center gap-4 hover:bg-[#282828] rounded p-2 transition-all duration-200 cursor-pointer group"
+                    >
+                      <div className="relative w-20 h-20 shrink-0">
+                        <Image
+                          src={album.images[0]?.url || "/placeholder.png"}
+                          alt={album.name}
+                          width={80}
+                          height={80}
+                          className="rounded object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-white font-semibold text-base mb-1 truncate">
+                          {album.name}
+                        </h3>
+                        <p className="text-[#b3b3b3] text-sm truncate">
+                          {album.artists.map((artist) => artist.name).join(", ")}
+                        </p>
+                        <p className="text-[#6a6a6a] text-xs mt-1">
+                          {getMonthName(album.release_date)} {new Date(album.release_date).getDate()}, {new Date(album.release_date).getFullYear()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
