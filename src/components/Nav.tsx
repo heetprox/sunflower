@@ -29,8 +29,9 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
 
   return (
     <>
+      {/* Desktop Sidebar */}
       <div 
-        className={`h-full bg-[#231f27] min-h-screen border-white/50 flex flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
+        className={`hidden md:flex h-full bg-[#231f27] min-h-screen border-white/50 flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
           isExpanded ? 'w-[15%]' : 'w-20'
         }`}
         onMouseEnter={() => setIsExpanded(true)}
@@ -57,7 +58,15 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
         ))}
       </div>
 
-      
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#231f27] h-16 flex items-center justify-around z-50 border-t border-white/10">
+        {navItems.map((item) => (
+          <Link href={item.link} key={item.label} className="p-2 text-white flex flex-col items-center justify-center w-full h-full hover:bg-[#8967b2] transition-colors duration-200">
+            <item.icon className="w-6 h-6" />
+            <span className="text-xs mt-1">{item.label}</span>
+          </Link>
+        ))}
+      </div>
     </>
   )
 }
