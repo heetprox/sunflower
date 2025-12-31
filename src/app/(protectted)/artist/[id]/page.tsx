@@ -131,7 +131,7 @@ export default function ArtistDetailPage() {
     <div className="w-full super min-h-screen">
       {/* Hero Section */}
       <div 
-        className="relative w-full h-[400px] bg-gradient-to-b from-[#535353] to-[#121212]"
+        className="relative w-full h-[400px] bg-linear-to-b from-[#535353] to-[#121212]"
         style={{
           backgroundImage: artist.images[0]?.url 
             ? `linear-gradient(transparent 0%, rgba(0,0,0,.5) 100%), url(${artist.images[0].url})`
@@ -140,7 +140,7 @@ export default function ArtistDetailPage() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#121212]" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent to-[#121212]" />
         
         <div className="relative max-w-7xl mx-auto px-8 h-full flex flex-col justify-between py-8">
           <button

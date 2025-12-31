@@ -1,43 +1,63 @@
+'use client'
+import Snowfall from 'react-snowfall'
 import AText from "@/components/AText";
 import { GoogleSignIn } from "@/components/GoogleSignIn";
+import Panel from "@/components/Panel";
 import { ArrowBigRight, ArrowDownLeft, ArrowRight, MoveRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+
+  const gradientRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Animated gradient background
+    let x = 0;
+    let y = 0;
+    const animate = () => {
+      x += 0.3;
+      y += 0.2;
+      if (gradientRef.current) {
+        gradientRef.current.style.transform = `translate(${Math.sin(x / 100) * 20}px, ${Math.cos(y / 100) * 20}px) scale(1.1)`;
+      }
+      requestAnimationFrame(animate);
+    };
+    animate();
+
+  }, []);
   return (
-    <div className="flex max-h-screen h-full min-h-screen  overflow-hidden items-center justify-center bg-black">
+    <div className="flex max-h-screen h-full min-h-screen  overflow-hidden items-center justify-center ">
       {/* <video className="absolute w-full h-screen top-0 opacity-30 object-cover" autoPlay loop muted>
         <source src="/hero.webm" type="video/webm" />
       </video> */}
+      <Snowfall  radius={[0.5,7]} />
 
-      <div className="flex flex-col w-[65%]">
-        <div className="super">
-          <AText >
-            <div className="flex flex-col">
-              <h1 className="text-7xl leading-none font-black text-white opacity-95 "
-              >
-                Browze
-              </h1>
-              <h1 className="text-7xl leading-none text-white opacity-95"
-              >Listen {"&"} Love</h1>
-              <h1
-
-                className="text-8xl font-black and text-blue-200 bg-clip-text opacity-100 leading-20">
-                Your Artist
-              </h1>
-            </div>
-
-          </AText>
-
-          <Link href={"/sign-in"}>
-            <div className="bg-white text-lg mt-7 font-normal text-black px-5 py-2 rounded-sm w-fit">start browsing <MoveRight className="inline-block w-5 h-5 " /></div>
-          </Link>
-        </div>
+  <Panel />
+      <Image
+        src="/sunflower.jpg"
+        alt="hero"
+        className="absolute w-full h-screen top-0 opacity-100 object-cover"
+        width={1000}
+        height={1000}
+      />
 
 
-        <div className="">
+      <div className="flex z-50 w-full">
+          <div
+          style={{
+            fontSize: 'clamp(1rem, 2.5vw, 400rem)',
+          }}          
+          className=" and  w-full text-center font-bold bg-black py-1 pb-2 ">
+              Vibe with your favorite artists
+          </div>
+         
 
-        </div>
+      
+
+
+
       </div>
     </div>
   );
