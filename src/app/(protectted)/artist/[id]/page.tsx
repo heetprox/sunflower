@@ -131,7 +131,7 @@ export default function ArtistDetailPage() {
     <div className="w-full super min-h-screen">
       {/* Hero Section */}
       <div 
-        className="relative w-full h-[400px] bg-linear-to-b from-[#535353] to-[#121212]"
+        className="relative w-full min-h-[300px] h-auto md:h-[400px] bg-linear-to-b from-[#535353] to-[#121212]"
         style={{
           backgroundImage: artist.images[0]?.url 
             ? `linear-gradient(transparent 0%, rgba(0,0,0,.5) 100%), url(${artist.images[0].url})`
@@ -142,17 +142,17 @@ export default function ArtistDetailPage() {
       >
         <div className="absolute inset-0 bg-linear-to-b from-transparent to-[#121212]" />
         
-        <div className="relative max-w-7xl mx-auto px-8 h-full flex flex-col justify-between py-8">
+        <div className="relative max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col justify-between py-8">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-fit"
+            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-fit mb-4 md:mb-0"
           >
             <ArrowLeft size={20} />
             <span>Back</span>
           </button>
 
-          <div className="flex items-end gap-6">
-            <div className="relative w-56 h-56 shrink-0">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 text-center md:text-left">
+            <div className="relative w-32 h-32 md:w-56 md:h-56 shrink-0">
               <Image
                 src={artist.images[0]?.url || "/placeholder.png"}
                 alt={artist.name}
@@ -162,10 +162,10 @@ export default function ArtistDetailPage() {
               />
             </div>
             
-            <div className="pb-6">
+            <div className="pb-0 md:pb-6">
               <p className="text-white text-sm font-semibold mb-2">Artist</p>
-              <h1 className="text-white text-6xl font-bold mb-4">{artist.name}</h1>
-              <div className="flex items-center gap-2 text-white text-sm">
+              <h1 className="text-white text-3xl md:text-6xl font-bold mb-4">{artist.name}</h1>
+              <div className="flex items-center justify-center md:justify-start gap-2 text-white text-sm">
                 <span>{formatNumber(artist.followers.total)} followers</span>
                 {artist.genres.length > 0 && (
                   <>
@@ -180,7 +180,7 @@ export default function ArtistDetailPage() {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">
             {error}
@@ -188,7 +188,7 @@ export default function ArtistDetailPage() {
         )}
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center justify-center md:justify-start gap-4 mb-8">
           <button
             onClick={handleFollow}
             className={`px-8 py-3 rounded-full font-semibold transition-all duration-200 ${

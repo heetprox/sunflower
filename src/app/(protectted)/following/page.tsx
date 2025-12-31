@@ -97,11 +97,11 @@ export default function page() {
   }
 
   return (
-    <div className="w-full super min-h-screen p-8">
+    <div className="w-full super min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
-          <Users size={40} className="text-white" />
-          <h1 className="text-white text-4xl font-bold">Following</h1>
+          <Users size={32} className="text-white md:w-10 md:h-10" />
+          <h1 className="text-white text-3xl md:text-4xl font-bold">Following</h1>
         </div>
 
         {error && (
