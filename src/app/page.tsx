@@ -44,12 +44,9 @@ export default function Home() {
       />
 
 
-      <div className="flex z-50 w-full">
+      <div className="flex z-50 w-full px-4">
           <div
-          style={{
-            fontSize: 'clamp(1rem, 2.5vw, 400rem)',
-          }}          
-          className=" and  w-full text-center font-bold bg-black py-1 pb-2 ">
+          className="w-full text-center font-bold bg-black py-2 pb-3 text-sm sm:text-lg md:text-xl lg:text-2xl">
               Vibe with your favorite artists
           </div>
          

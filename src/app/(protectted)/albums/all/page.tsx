@@ -93,8 +93,8 @@ export default function AllAlbumsPage() {
   }
 
   return (
-    <div className="w-full super min-h-screen p-8">
-      <div className="max-w-7xl">
+    <div className="w-full super min-h-screen p-4 md:p-8">
+      <div className="max-w-7xl mx-auto">
         <button
           onClick={() => router.back()}
           className="flex items-center gap-2 text-[#b3b3b3] hover:text-white transition-colors mb-8"
@@ -122,12 +122,12 @@ export default function AllAlbumsPage() {
         ) : (
           <div className="bg-[#181818]/40 rounded-lg overflow-hidden">
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 py-3 border-b border-white/10 text-[#b3b3b3] text-sm font-medium">
-              <div className="col-span-1 text-center">#</div>
-              <div className="col-span-5">Title</div>
-              <div className="col-span-3">Artist</div>
-              <div className="col-span-2">Release Date</div>
-              <div className="col-span-1 flex justify-end">
+            <div className="grid grid-cols-12 gap-4 px-4 md:px-6 py-3 border-b border-white/10 text-[#b3b3b3] text-sm font-medium">
+              <div className="hidden md:block col-span-1 text-center">#</div>
+              <div className="col-span-8 md:col-span-5">Title</div>
+              <div className="col-span-4 md:col-span-3">Artist</div>
+              <div className="hidden md:block col-span-2">Release Date</div>
+              <div className="hidden md:flex col-span-1 justify-end">
                 <Clock size={16} />
               </div>
             </div>
@@ -137,14 +137,14 @@ export default function AllAlbumsPage() {
               {albums.map((album, index) => (
                 <div
                   key={album.id}
-                  className="grid grid-cols-12 gap-4 px-6 py-3 hover:bg-white/10 transition-colors cursor-pointer group items-center"
+                  className="grid grid-cols-12 gap-4 px-4 md:px-6 py-3 hover:bg-white/10 transition-colors cursor-pointer group items-center"
                 >
-                  <div className="col-span-1 text-[#b3b3b3] text-sm text-center">
+                  <div className="hidden md:block col-span-1 text-[#b3b3b3] text-sm text-center">
                     {index + 1}
                   </div>
                   
-                  <div className="col-span-5 flex items-center gap-3">
-                    <div className="relative w-12 h-12 shrink-0">
+                  <div className="col-span-8 md:col-span-5 flex items-center gap-3">
+                    <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
                       <Image
                         src={album.images[0]?.url || "/placeholder.png"}
                         alt={album.name}
@@ -158,26 +158,26 @@ export default function AllAlbumsPage() {
                         href={`https://open.spotify.com/album/${album.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-white font-medium truncate group-hover:underline block"
+                        className="text-white font-medium truncate group-hover:underline block text-sm md:text-base"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {album.name}
                       </a>
-                      <p className="text-[#b3b3b3] text-sm capitalize">
+                      <p className="text-[#b3b3b3] text-xs md:text-sm capitalize">
                         {album.album_type}
                       </p>
                     </div>
                   </div>
 
-                  <div className="col-span-3 text-[#b3b3b3] text-sm truncate">
+                  <div className="col-span-4 md:col-span-3 text-[#b3b3b3] text-sm truncate">
                     {album.artists.map((artist) => artist.name).join(", ")}
                   </div>
 
-                  <div className="col-span-2 text-[#b3b3b3] text-sm">
+                  <div className="hidden md:block col-span-2 text-[#b3b3b3] text-sm">
                     {formatDate(album.release_date)}
                   </div>
 
-                  <div className="col-span-1 text-[#b3b3b3] text-sm text-right">
+                  <div className="hidden md:block col-span-1 text-[#b3b3b3] text-sm text-right">
                     {album.total_tracks}
                   </div>
                 </div>

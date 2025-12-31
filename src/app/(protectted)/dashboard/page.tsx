@@ -166,7 +166,7 @@ export default function Dashboard() {
                     View All
                   </Link>
                 </div>
-                <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4">
                   {olderAlbums.map((album) => (
                     <div
                       key={album.id}
