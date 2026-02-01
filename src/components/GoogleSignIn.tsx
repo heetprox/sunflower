@@ -7,8 +7,8 @@ export function GoogleSignIn() {
 const handleGoogleSignIn = async () => {
   await authClient.signIn.social({
     provider: "google",
-    callbackURL: "http://localhost:3000/dashboard",
-    errorCallbackURL: "http://localhost:3000/error"
+    callbackURL: "https://sunflower.realblue.lol/dashboard", 
+    errorCallbackURL: "https://sunflower.realblue.lol/error"
   });
 };
   return (
