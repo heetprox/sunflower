@@ -99,7 +99,7 @@ export default function Dashboard() {
   const olderAlbums = albums.filter(album => !isRecent(album.release_date)).slice(0, 8);
 
   return (
-    <div className="w-full bg-[#F0EEE1] min-h-screen p-8">
+    <div className="w-full edi min-h-screen p-8">
       <div className="max-w-full md:max-w-[90%] ">
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">
@@ -120,10 +120,10 @@ export default function Dashboard() {
             {recentAlbums.length > 0 && (
               <div className="mb-12">
                 <div className="flex items-center justify-between mb-6">
-                  <h1 className="text-white text-2xl font-bold">Latest Albums</h1>
+                  <h1 className="text-white text-2xl">Latest Albums</h1>
                   <Link 
                     href="/albums/all"
-                    className="text-[#b3b3b3] hover:text-white text-sm font-semibold transition-colors"
+                    className="text-[#b3b3b3] hover:text-white text-sm  transition-colors"
                   >
                     View All
                   </Link>
@@ -143,7 +143,7 @@ export default function Dashboard() {
                           className="rounded-lg aspect-square w-full object-cover"
                         />
                       </div>
-                      <h3 className="text-white font-semibold text-base mb-1 truncate">
+                      <h3 className="text-white  text-base mb-1 truncate">
                         {album.name}
                       </h3>
                       <p className="text-[#b3b3b3] text-sm truncate">
@@ -158,10 +158,10 @@ export default function Dashboard() {
             {olderAlbums.length > 0 && (
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-white text-2xl font-bold">Earlier Releases</h2>
+                  <h2 className="text-white text-2xl ">Earlier Releases</h2>
                   <Link 
                     href="/albums/all"
-                    className="text-[#b3b3b3] hover:text-white text-sm font-semibold transition-colors"
+                    className="text-[#b3b3b3] hover:text-white text-sm  transition-colors"
                   >
                     View All
                   </Link>
@@ -182,7 +182,7 @@ export default function Dashboard() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-white font-semibold text-base mb-1 truncate">
+                        <h3 className="text-white  text-base mb-1 truncate">
                           {album.name}
                         </h3>
                         <p className="text-[#b3b3b3] text-sm truncate">

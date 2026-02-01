@@ -128,7 +128,7 @@ export default function ArtistDetailPage() {
   }
 
   return (
-    <div className="w-full super min-h-screen">
+    <div className="w-full edi min-h-screen">
       {/* Hero Section */}
       <div 
         className="relative w-full min-h-[300px] h-auto md:h-[400px] bg-linear-to-b from-[#535353] to-[#121212]"
@@ -163,8 +163,8 @@ export default function ArtistDetailPage() {
             </div>
             
             <div className="pb-0 md:pb-6">
-              <p className="text-white text-sm font-semibold mb-2">Artist</p>
-              <h1 className="text-white text-3xl md:text-6xl font-bold mb-4">{artist.name}</h1>
+              <p className="text-white text-sm  mb-2">Artist</p>
+              <h1 className="text-white text-3xl md:text-6xl  mb-4">{artist.name}</h1>
               <div className="flex items-center justify-center md:justify-start gap-2 text-white text-sm">
                 <span>{formatNumber(artist.followers.total)} followers</span>
                 {artist.genres.length > 0 && (
@@ -191,7 +191,7 @@ export default function ArtistDetailPage() {
         <div className="flex items-center justify-center md:justify-start gap-4 mb-8">
           <button
             onClick={handleFollow}
-            className={`px-8 py-3 rounded-full font-semibold transition-all duration-200 ${
+            className={`px-8 py-3 rounded-full  transition-all duration-200 ${
               isFollowing
                 ? "bg-transparent text-white border-2 border-white/20 hover:border-white/40 hover:scale-105"
                 : "bg-white text-black hover:scale-105"
@@ -216,7 +216,7 @@ export default function ArtistDetailPage() {
           </div>
         ) : (
           <>
-            <h2 className="text-white text-2xl font-bold mb-6">Discography</h2>
+            <h2 className="text-white text-2xl  mb-6">Discography</h2>
             
             {albums.length === 0 ? (
               <div className="text-center py-12 text-white/60">
@@ -242,7 +242,7 @@ export default function ArtistDetailPage() {
                       />
                     </div>
 
-                    <div className="text-white font-semibold text-base mb-1 truncate group-hover:underline">
+                    <div className="text-white  text-base mb-1 truncate group-hover:underline">
                       {album.name}
                     </div>
 
