@@ -1,5 +1,7 @@
 'use client'
 
+import { GoogleSignIn } from "@/components/GoogleSignIn";
+
 export default function Home() {
 
 
@@ -24,10 +26,15 @@ export default function Home() {
           </span>
 
 
-          <div className="">
-            find your favourt artist 
+          <div className="text-black/60 edi max-w-md text-center">
+            Follow your favorite Music Artist — and Track All Albums Categories Data all of your Artist.
           </div>
+
+          <div className="">
+            <GoogleSignIn/>
+            </div>
         </div>
+
 
 
         <div className="w-1/2 h-full border-black border-5">

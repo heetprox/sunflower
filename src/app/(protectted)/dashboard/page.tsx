@@ -99,7 +99,7 @@ export default function Dashboard() {
   const olderAlbums = albums.filter(album => !isRecent(album.release_date)).slice(0, 8);
 
   return (
-    <div className="w-full super min-h-screen p-8">
+    <div className="w-full bg-[#F0EEE1] min-h-screen p-8">
       <div className="max-w-full md:max-w-[90%] ">
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">

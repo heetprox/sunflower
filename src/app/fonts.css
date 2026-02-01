@@ -30,6 +30,16 @@
   font-family: "eastbroadway-semiexpandedblack";
   src: url("/fonts/eastbroadway-semiexpandedblack.otf") format("opentype");
 }
+
+@font-face {
+  font-family: "EditorialNew";
+  src: url("/fonts/EditorialNew.otf") format("opentype");
+}
+
+
+.edi {
+  font-family: "EditorialNew", sans-serif;
+}
 .eww {
   font-family: "eastbroadway-semiexpandedblack", sans-serif;
 }
