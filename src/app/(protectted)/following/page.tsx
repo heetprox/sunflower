@@ -97,12 +97,15 @@ export default function page() {
   }
 
   return (
-    <div className="w-full super min-h-screen p-4 md:p-8">
+    <div className="w-full edi min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
-          <Users size={32} className="text-white md:w-10 md:h-10" />
-          <h1 className="text-white text-3xl md:text-4xl font-bold">Following</h1>
+          <h1 className="text-white text-3xl md:text-4xl ">Following</h1>
+           
         </div>
+          <div className="my-4 text-[#b3b3b3] text-sm text-elft">
+              Following {artists.length} artist{artists.length !== 1 ? "s" : ""}
+            </div>
 
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">
@@ -137,7 +140,7 @@ export default function page() {
                     />
                   </div>
 
-                  <h3 className="text-white font-semibold text-base mb-2 truncate group-hover:underline">
+                  <h3 className="text-white  text-base mb-2 truncate group-hover:underline">
                     {artist.name}
                   </h3>
 
@@ -154,9 +157,7 @@ export default function page() {
               ))}
             </div>
 
-            <div className="mt-6 text-[#b3b3b3] text-sm text-center">
-              Following {artists.length} artist{artists.length !== 1 ? "s" : ""}
-            </div>
+         
           </>
         )}
       </div>
