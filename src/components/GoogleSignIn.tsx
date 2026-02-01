@@ -17,7 +17,7 @@ const handleGoogleSignIn = async () => {
       className=""
     >
      
-      <div className="rounded-lg   edi  text-md  text-black transition-all duration-100 hover:text-[#F9683C] underline underline-offset-4 cursor-pointer">
+      <div className="rounded-lg   edi  text-md  text-[#f93cb7] transition-all duration-100 hover:text-white underline underline-offset-4 cursor-pointer">
       Sign in
       </div>
     </button>

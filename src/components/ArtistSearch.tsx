@@ -90,11 +90,11 @@ export default function ArtistSearch() {
         }
     };
 
-    const handleArtistClick = (artist: Artist) => {
+    const hleArtistClick = (artist: Artist) => {
         setSelectedArtist(artist);
     };
 
-    const handleFollowToggle = async () => {
+    const hleFollowToggle = async () => {
         if (!selectedArtist || !userId) {
             setError("Please log in to follow artists");
             return;
@@ -135,8 +135,8 @@ export default function ArtistSearch() {
     };
 
     return (
-        <div className="flex w-full h-screen">
-            <div className="w-[30vw] mx-auto py-4">
+        <div className="flex w-full edi h-screen">
+            <div className="md:w-[60vw] w-[90vw] mx-auto py-4">
                 <div className="relative w-full mb-6">
                     <div className={`relative w-full transition-all duration-300 `}>
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -152,7 +152,7 @@ export default function ArtistSearch() {
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Search for artists..."
-                            className={`w-full pl-12 pr-12 py-4 bg-[#231f27]  rounded-4xl super  transition-all duration-300 text-white placeholder-white/70 shadow-sm hover:shadow-md focus:outline-none`}
+                            className={`w-full pl-12 pr-12 py-4 bg-[#231f27]  rounded-4xl  transition-all duration-300 text-white placeholder-white/70 shadow-sm hover:shadow-md focus:outline-none`}
                         />
 
                         {query && (
@@ -184,13 +184,13 @@ export default function ArtistSearch() {
                     {artists.map((artist, index) => (
                         <div
                             key={artist.id}
-                            onClick={() => handleArtistClick(artist)}
+                            onClick={() => hleArtistClick(artist)}
                             className={`flex w-full items-center gap-4  rounded-4xl cursor-pointer
                         ${index == 0 ? "bg-white/10" : "hover:bg-white/15"}
                         `}>
                             {index == 0 ? (
                                 <div className="flex p-3 flex-col gap-3">
-                                    <div className="and text-white text-3xl ml-2">Top result</div>
+                                    <div className=" text-white text-3xl ml-2">Top result</div>
                                     <div className="flex p-3 flex-col gap-4 w-full">
                                         <Image
                                             src={artist.images[0].url}
@@ -199,7 +199,7 @@ export default function ArtistSearch() {
                                             height={64}
                                             className="rounded-full w-32 aspect-square object-cover"
                                         />
-                                        <div className="w-full rounded-full justify-center super flex flex-col">
+                                        <div className="w-full rounded-full justify-center  flex flex-col">
                                             <span className="text-white text-2xl">
                                                 {artist.name}
                                             </span>
@@ -218,7 +218,7 @@ export default function ArtistSearch() {
                                         height={64}
                                         className="rounded-full aspect-square object-cover"
                                     />
-                                    <div className="w-full rounded-full justify-center super flex flex-col">
+                                    <div className="w-full rounded-full justify-center  flex flex-col">
                                         <span className="text-white text-lg">
                                             {artist.name}
                                         </span>
@@ -250,7 +250,7 @@ export default function ArtistSearch() {
                     <div className="h-full flex flex-col">
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-white/10">
-                            <h2 className="text-white text-xl font-semibold">Artist Profile</h2>
+                            <h2 className="text-white text-xl ">Artist Profile</h2>
                             <button
                                 onClick={closeSidePanel}
                                 className="text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
@@ -273,7 +273,7 @@ export default function ArtistSearch() {
 
                                 {/* Artist Name */}
                                 <div className="text-center">
-                                    <h3 className="text-white text-3xl font-bold mb-2">
+                                    <h3 className="text-white text-3xl  mb-2">
                                         {selectedArtist.name}
                                     </h3>
                                     <p className="text-white/60 text-lg">
@@ -283,9 +283,9 @@ export default function ArtistSearch() {
 
                                 {/* Follow Button */}
                                 <button
-                                    onClick={handleFollowToggle}
+                                    onClick={hleFollowToggle}
                                     disabled={followLoading}
-                                    className={`px-8 py-3 rounded-full font-semibold text-lg transition-all duration-200 ${
+                                    className={`px-8 py-3 rounded-full  text-lg transition-all duration-200 ${
                                         followedArtists.has(selectedArtist.id)
                                             ? "bg-white/10 text-white border-2 border-white/30 hover:bg-white/20 hover:scale-105"
                                             : "bg-white text-black hover:scale-105 hover:bg-white/90"
@@ -316,7 +316,7 @@ export default function ArtistSearch() {
                                                     style={{ width: `${selectedArtist.popularity}%` }}
                                                 ></div>
                                             </div>
-                                            <span className="text-white font-semibold">
+                                            <span className="text-white ">
                                                 {selectedArtist.popularity}%
                                             </span>
                                         </div>

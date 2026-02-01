@@ -31,7 +31,7 @@ const Nav = ({isExpanded, setIsExpanded}: {isExpanded: boolean, setIsExpanded: (
     <>
       {/* Desktop Sidebar */}
       <div 
-        className={`hidden md:flex h-full bg-[#231f27] min-h-screen border-white/50 flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
+        className={`hidden edi md:flex h-full bg-[#231f27] min-h-screen border-white/50 flex-col overflow-hidden gap-2 fixed left-0 top-0 transition-all duration-300 ease-in-out ${
           isExpanded ? 'w-[15%]' : 'w-20'
         }`}
         onMouseEnter={() => setIsExpanded(true)}
