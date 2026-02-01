@@ -7,11 +7,10 @@ export function GoogleSignIn() {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/dashboard", // ✅ Use relative path (cleaner)
+        callbackURL: "/dashboard",
       });
     } catch (error) {
       console.error("Sign in failed:", error);
-      // Optionally redirect to error page
       window.location.href = "/error";
     }
   };
