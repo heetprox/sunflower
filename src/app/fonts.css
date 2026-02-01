@@ -26,6 +26,13 @@
   src: url("/fonts/AvoidanceGenevra-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "eastbroadway-semiexpandedblack";
+  src: url("/fonts/eastbroadway-semiexpandedblack.otf") format("opentype");
+}
+.eww {
+  font-family: "eastbroadway-semiexpandedblack", sans-serif;
+}
 
 .off{
     font-family: "OffBit-101Bold", sans-serif;
