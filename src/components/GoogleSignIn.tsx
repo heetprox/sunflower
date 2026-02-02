@@ -3,20 +3,23 @@
 import { authClient } from "@/lib/auth-client";
 
 export function GoogleSignIn() {
-  const handleGoogleSignIn = async () => {
-    try {
-      await authClient.signIn.social({
-        provider: "google",
-        callbackURL: "/dashboard",
-      });
-    } catch (error) {
-      console.error("Sign in failed:", error);
-      window.location.href = "/error";
-    }
-  };
+ const handleGoogleLogin = async () => {
+        try {
+            const data = await authClient.signIn.social({
+                provider: "google",
+                callbackURL: "/dashboard",
+            });
+            
+            if (data.error) {
+                console.error("Login error:", data.error);
+            }
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
+    };
 
   return (
-    <button onClick={handleGoogleSignIn}>
+    <button onClick={handleGoogleLogin}>
       <div className="rounded-lg text-md text-[#f93cb7] transition-all duration-100 hover:text-white underline underline-offset-4 cursor-pointer">
         Sign in
       </div>
