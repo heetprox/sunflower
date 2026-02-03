@@ -5,16 +5,12 @@ import { authClient } from "@/lib/auth-client";
 export function GoogleSignIn() {
  const handleGoogleLogin = async () => {
         try {
-            const data = await authClient.signIn.social({
+            await authClient.signIn.social({
                 provider: "google",
-                callbackURL: "/dashboard",
+                callbackURL: "/dashboard",                errorCallbackURL: "/login?error=auth_failed", 
             });
-            
-            if (data.error) {
-                console.error("Login error:", data.error);
-            }
         } catch (error) {
-            console.error("Login failed:", error);
+            console.error("Login error:", error);
         }
     };
 
