@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  
+  // ✅ Add this to help debug
+  async headers() {
+    return [
+      {
+        source: '/api/auth/:path*',
+        headers: [
+          {
+            key: 'x-forwarded-host',
+            value: 'sunflower.realblue.lol',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
