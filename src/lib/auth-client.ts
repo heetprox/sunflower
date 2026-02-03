@@ -1,7 +1,7 @@
 import { createAuthClient } from "better-auth/react";
 
 export const authClient = createAuthClient({
-  baseURL: "/",
+  baseURL:"https://sunflower.realblue.lol",
   fetchOptions: {
     credentials: "include",
   },
