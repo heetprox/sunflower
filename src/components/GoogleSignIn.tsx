@@ -3,16 +3,19 @@
 import { authClient } from "@/lib/auth-client";
 
 export function GoogleSignIn() {
- const handleGoogleLogin = async () => {
-        try {
-            await authClient.signIn.social({
-                provider: "google",
-                callbackURL: "/dashboard",                errorCallbackURL: "/login?error=auth_failed", 
-            });
-        } catch (error) {
-            console.error("Login error:", error);
-        }
-    };
+  const handleGoogleLogin = async () => {
+    try {
+      const frontendURL = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: `${frontendURL}/dashboard`, // ✅ Full URL
+        errorCallbackURL: `${frontendURL}/login?error=auth_failed`,
+      });
+    } catch (error) {
+      console.error("Login error:", error);
+    }
+  };
 
   return (
     <button onClick={handleGoogleLogin}>

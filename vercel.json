@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/auth/:path*",
-      "destination": "https://sunflower-backend-vv4o.onrender.com/api/auth/:path*"
-    }
-  ]
-}
