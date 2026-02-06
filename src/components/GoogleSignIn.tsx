@@ -5,7 +5,7 @@ import { authClient } from "@/lib/auth-client";
 export function GoogleSignIn() {
   const handleGoogleLogin = async () => {
     try {
-      const frontendURL = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      const frontendURL = "https://sunflower.realblue.lol";
       
       await authClient.signIn.social({
         provider: "google",
